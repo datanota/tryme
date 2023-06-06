@@ -1,0 +1,271 @@
+
+# :kivy 2.0.0
+
+<TryMeContent>:
+
+    MDNavigationLayout:
+
+        ScreenManager:
+            id: screen_manager
+            canvas:
+                Color:
+                    rgb: 40/255, 40/255, 40/255
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+##########################################################
+########################################################## home screen
+##########################################################
+
+            Screen:
+                name: 'home'
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDTopAppBar:
+                        md_bg_color: app.theme_cls.primary_dark
+                        specific_text_color: app.theme_cls.primary_light
+                        elevation: 1
+                        padding: '15dp'
+                        MDRoundFlatIconButton:
+                            name: 'data_home_b'
+                            icon: 'copyright'
+                            text: '2023 Datanota'
+                            font_size: '14sp'
+                            pos_hint: {'right': 1, 'top': 1}
+                            on_release:
+                                app.tip_dialog('User Guide:', '''
+                                step-by-step instructions
+                                ''')
+                    GridLayout:
+                        cols: 2
+                        spacing: '0dp'
+                        GridLayout:
+                            rows: 2
+                            padding: '40dp'
+                            Image:
+                                source: '../assets/dnlogo.png'
+                                allow_stretch: True
+                            MDLabel:
+                                text: 'try-me: chapter 2'
+                                halign: 'center'
+                                theme_text_color: 'Custom'
+                                text_color: 1, 1, 1
+                                padding_x: '80dp'
+                                font_size: 40
+                        GridLayout:
+                            rows: 4
+                            spacing: '30dp'
+                            padding: '90dp'
+                            MDFillRoundFlatIconButton:
+                                name: 's1_b'
+                                icon: 'expand-all'
+                                text: 'screen one'
+                                font_size: '20sp'
+                                md_bg_color: 1, 1, 1
+                                size_hint_x: 0.6
+                                on_release:
+                                    screen_manager.current = 's1'
+                            MDFillRoundFlatIconButton:
+                                name: 's2_b'
+                                icon: 'expand-all'
+                                text: 'screen two'
+                                font_size: '20sp'
+                                md_bg_color: 1, 1, 1
+                                size_hint_x: 0.6
+                                on_release:
+                                    screen_manager.current = 's2'
+                            MDFillRoundFlatIconButton:
+                                name: 'demo_home_b'
+                                icon: 'play-circle'
+                                text: 'Product Demo'
+                                font_size: '20sp'
+                                md_bg_color: 1, 1, 1
+                                size_hint_x: 0.6
+                                on_release:
+                                    app.sksc_dn1_demo()
+
+##########################################################
+########################################################## screen one
+##########################################################
+
+            Screen:
+                name: 's1'
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDTopAppBar:
+                        # title: "Menu"
+                        spacing: '10dp'
+                        md_bg_color: app.theme_cls.primary_dark
+                        specific_text_color: app.theme_cls.primary_light
+                        elevation: 1
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state('toggle')]]
+                        right_action_items: [['copyright']]
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        TabbedPanel:
+                            tab_width: (self.parent.width - 10)/5
+                            do_default_tab: False
+                            tab_pos: 'bottom_mid'
+                            background_image: ''
+                            background_color: 171/255, 194/255, 179/255
+                            TabbedPanelItem:
+                                id: t1
+                                text: 'T1'
+                                # background_normal: 'blue.png'
+                                background_down: '../assets/green.png'
+                                BoxLayout:
+                                    orientation: 'vertical'
+                                    MDLabel:
+                                        text: 'tab one'
+                                        color: 40/255, 40/255, 40/255
+                                        font_size: 80
+                                        halign: 'center'
+                            TabbedPanelItem:
+                                id: t2
+                                text: 'T2'
+                                background_down: '../assets/green.png'
+                                BoxLayout:
+                                    orientation: 'vertical'
+                                    MDLabel:
+                                        text: 'tab two'
+                                        color: 40/255, 40/255, 40/255
+                                        font_size: 80
+                                        halign: 'center'
+                            TabbedPanelItem:
+                                id: t3
+                                text: 'T3'
+                                background_down: '../assets/green.png'
+                                BoxLayout:
+                                    orientation: 'vertical'
+                                    MDLabel:
+                                        text: 'tab three'
+                                        color: 40/255, 40/255, 40/255
+                                        font_size: 80
+                                        halign: 'center'
+                            TabbedPanelItem:
+                                id: t4
+                                text: 'T4'
+                                background_down: '../assets/green.png'
+                                BoxLayout:
+                                    orientation: 'vertical'
+                                    MDLabel:
+                                        text: 'tab four'
+                                        color: 40/255, 40/255, 40/255
+                                        font_size: 80
+                                        halign: 'center'
+                            TabbedPanelItem:
+                                id: t5
+                                text: 'T5'
+                                background_down: '../assets/green.png'
+                                BoxLayout:
+                                    orientation: 'vertical'
+                                    MDLabel:
+                                        text: 'tab five'
+                                        color: 40/255, 40/255, 40/255
+                                        font_size: 80
+                                        halign: 'center'
+
+##########################################################
+########################################################## screen two
+##########################################################
+
+            Screen:
+                name: 's2'
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDTopAppBar:
+                        md_bg_color: app.theme_cls.primary_dark
+                        specific_text_color: app.theme_cls.primary_light
+                        elevation: 1
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state('toggle')]]
+                        right_action_items: [['copyright']]
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        TabbedPanel:
+                            tab_width: (self.parent.height - 5)/2
+                            do_default_tab: True
+                            tab_pos: 'right_mid'
+                            background_image: ''
+                            background_color: 185/255, 207/255, 216/255
+                            TabbedPanelItem:
+                                id: tab1
+                                text: 'tab'
+                                # background_normal: '../assets/dnlogo.png'
+                                background_down: '../assets/green.png'
+                                BoxLayout:
+                                    orientation: 'vertical'
+                                    MDLabel:
+                                        text: 'another tab'
+                                        color: 40/255, 40/255, 40/255
+                                        font_size: 80
+                                        halign: 'center'
+
+##########################################################
+########################################################## navigation drawer
+##########################################################
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            BoxLayout:
+                canvas:
+                    Color:
+                        rgb: 1, 1, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                orientation: 'vertical'
+                spacing: '1dp'
+                padding: '1dp'
+
+                Image:
+                    source: '../assets/dnlogo.png'
+                    size_hint_x: 0.7
+                    allow_stretch: True
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                ScrollView:
+                    MDList:
+                        OneLineIconListItem:
+                            text: 'Home'
+                            on_release:
+                                screen_manager.current = 'home'
+                                nav_drawer.set_state('close')
+                            theme_text_color: 'Custom'
+                            text_color: 0, 0, 0
+                            IconLeftWidget:
+                                icon: 'home'
+                                theme_text_color: 'Custom'
+                                text_color: 0, 0, 0
+                        OneLineIconListItem:
+                            text: 'screen one'
+                            on_release:
+                                screen_manager.current = 's1'
+                                nav_drawer.set_state('close')
+                            theme_text_color: 'Custom'
+                            text_color: 0, 0, 0
+                            IconLeftWidget:
+                                icon: 'expand-all'
+                                theme_text_color: 'Custom'
+                                text_color: 0, 0, 0
+                        OneLineIconListItem:
+                            text: 'screen two'
+                            on_release:
+                                screen_manager.current = 's2'
+                                nav_drawer.set_state('close')
+                            theme_text_color: 'Custom'
+                            text_color: 0, 0, 0
+                            IconLeftWidget:
+                                icon: 'expand-all'
+                                theme_text_color: 'Custom'
+                                text_color: 0, 0, 0
+                        OneLineIconListItem:
+                            text: 'Product Demo'
+                            on_release:
+                                app.tm_demo('https://www.datanota.com/post/try-me-chapter-2-kivy')
+                                nav_drawer.set_state('close')
+                            theme_text_color: 'Custom'
+                            text_color: 0, 0, 0
+                            IconLeftWidget:
+                                icon: 'play-circle'
+                                theme_text_color: 'Custom'
+                                text_color: 0, 0, 0
+

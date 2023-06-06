@@ -1,0 +1,53 @@
+
+# :kivy 2.0.0
+
+<TryMeContent>:
+
+    ScreenManager:
+        id: screen_manager
+        canvas:
+            Color:
+                rgb: 40/255, 40/255, 40/255
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+##########################################################
+########################################################## home screen
+##########################################################
+
+        Screen:
+            name: 'home'
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '5dp'
+                GridLayout:
+                    rows: 2
+                    padding: '20dp'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        MDFillRoundFlatIconButton:
+                            name: 'demo'
+                            md_bg_color: 58/255, 58/255, 64/255
+                            icon: 'youtube'
+                            icon_color: 1, 1, 1
+                            text: 'Demo'
+                            text_color: 1, 1, 1
+                            font_size: '20sp'
+                            size_hint_x: 0.2
+                            valign: 'top'
+                            on_release:
+                                app.tm_demo('https://www.datanota.com/post/tryme-quick-start')
+                        Image:
+                            source: '../assets/dnlogo.png'
+                            allow_stretch: True
+                        MDIconButton:
+                            icon: 'copyright'
+                            pos_hint: {"center_x": 0.95, "center_y": 0.5}
+                            theme_icon_color: "Custom"
+                            icon_color: 1, 1, 1
+                            on_release:
+                                app.tm_ss()
+
+
+

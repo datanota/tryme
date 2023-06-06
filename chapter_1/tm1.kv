@@ -1,0 +1,118 @@
+
+# :kivy 2.0.0
+
+<TryMeContent>:
+
+    ScreenManager:
+        id: screen_manager
+        canvas:
+            Color:
+                rgb: 40/255, 40/255, 40/255
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+##########################################################
+########################################################## home screen
+##########################################################
+
+        Screen:
+            name: 'home'
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '5dp'
+                MDTopAppBar:
+                    md_bg_color: app.theme_cls.primary_dark
+                    specific_text_color: app.theme_cls.primary_light
+                    elevation: 1
+                    left_action_items:
+                        [
+                        ["home", lambda x: app.callback_top_nav('home'), 'home'],
+                        ["book-open-page-variant", lambda x: app.callback_top_nav('pages'), 'pages']
+                        ]
+                    right_action_items:
+                        [
+                        ["copyright", lambda x: app.tip_dialog('User Guide:',
+                        '''
+                        step-by-step instructions
+                        '''), ''
+                        ]
+                        ]
+                GridLayout:
+                    cols: 2
+                    background_color: 86/255, 69/255, 53/255
+                    padding: '20dp'
+                    Image:
+                        source: '../assets/dnlogo.png'
+                        allow_stretch: True
+
+##########################################################
+########################################################## page screen
+##########################################################
+
+        Screen:
+            name: 'pages'
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '50dp'
+                BoxLayout:
+                    orientation: 'vertical'
+                    # padding: 0, 0, 0, 70
+                    spacing: '20dp'
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        canvas:
+                            Color:
+                                rgb: 253/255, 189/255, 98/255
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        Image:
+                            source: '../assets/dnlogo.png'
+                            allow_stretch: True
+                        Image:
+                            source: '../assets/dnlogo.png'
+                            allow_stretch: True
+                        Image:
+                            source: '../assets/dnlogo.png'
+                            allow_stretch: True
+                    GridLayout:
+                        cols: 2
+                        canvas:
+                            Color:
+                                rgb: 1, 170/255, 253/255
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        Image:
+                            source: '../assets/dnlogo.png'
+                            allow_stretch: True
+                        GridLayout:
+                            rows: 2
+                            canvas:
+                                Color:
+                                    rgb: 187/255, 251/255, 252/255
+                                Rectangle:
+                                    size: self.size
+                                    pos: self.pos
+                            Image:
+                                source: '../assets/dnlogo.png'
+                                allow_stretch: True
+                            Image:
+                                source: '../assets/dnlogo.png'
+                                allow_stretch: True
+                MDBottomAppBar:
+                    md_bg_color: 97/255, 97/255, 97/255
+                    MDTopAppBar:
+                        md_bg_color: app.theme_cls.primary_dark
+                        specific_text_color: app.theme_cls.primary_light
+                        elevation: 1
+                        type: 'bottom'
+                        icon: 'home'
+                        icon_color: 97/255, 97/255, 97/255
+                        on_action_button: app.callback_top_nav('home')
+
+
+
+
+

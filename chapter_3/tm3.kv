@@ -1,0 +1,191 @@
+
+# :kivy 2.0.0
+
+<TryMeContent>:
+
+    ScreenManager:
+        id: screen_manager
+        canvas:
+            Color:
+                rgb: 40/255, 40/255, 40/255
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+##########################################################
+########################################################## home screen
+##########################################################
+        Screen:
+            name: 'home'
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '5dp'
+                MDTopAppBar:
+                    md_bg_color: app.theme_cls.primary_dark
+                    specific_text_color: app.theme_cls.primary_light
+                    elevation: 1
+                    left_action_items:
+                        [
+                        ["home", lambda x: app.callback_top_nav('home'), 'home'],
+                        ["checkbox-outline", lambda x: app.callback_top_nav('same_screen'), 'input_box']
+                        ]
+                    right_action_items:
+                        [
+                        ["copyright", lambda x: app.tip_dialog('User Guide:',
+                        '''
+                        step-by-step instructions
+                        '''), ''
+                        ]
+                        ]
+                GridLayout:
+                    cols: 2
+                    background_color: 86/255, 69/255, 53/255
+                    padding: '20dp'
+                    Image:
+                        source: '../assets/dnlogo.png'
+                        allow_stretch: True
+
+##########################################################
+########################################################## screen one
+##########################################################
+
+        Screen:
+            name: 'same_screen'
+            BoxLayout:
+                orientation: 'vertical'
+                MDTopAppBar:
+                    md_bg_color: app.theme_cls.primary_dark
+                    specific_text_color: app.theme_cls.primary_light
+                    elevation: 1
+                    left_action_items:
+                        [
+                        ["home", lambda x: app.callback_top_nav('home'), 'home'],
+                        ["checkbox-outline", lambda x: app.callback_top_nav('same_screen'), 'input_box']
+                        ]
+                    right_action_items:
+                        [["copyright"]]
+                GridLayout:
+                    cols: 2
+                    canvas:
+                        Color:
+                            rgb: 207/255, 218/255, 223/255
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    BoxLayout:
+                        orientation: 'vertical'
+                        GridLayout:
+                            rows: 6
+                            spacing: '20dp'
+                            padding: '10dp'
+                            MDTextFieldRect:
+                                id: de_date
+                                multiline: False
+                                cursor_color: 196/255, 204/255, 217/255
+                                hint_text: 'Date (YYYY-MM-DD)'
+                                hint_text_color: 149/255, 158/255, 167/255
+                                on_text: self.foreground_color = 196/255, 204/255, 217/255
+                                size_hint: 1, None
+                                height: '50dp'
+                                color: 196/255, 204/255, 217/255
+                                font_size: '20sp'
+                                background_normal: ''
+                                background_color: 90/255, 101/255, 108/255
+                            MDTextFieldRect:
+                                id: de_name
+                                multiline: False
+                                cursor_color: 196/255, 204/255, 217/255
+                                hint_text: 'Name'
+                                hint_text_color: 149/255, 158/255, 167/255
+                                on_text: self.foreground_color = 196/255, 204/255, 217/255
+                                size_hint: 1, None
+                                height: '50dp'
+                                color: 196/255, 204/255, 217/255
+                                font_size: '20sp'
+                                background_normal: ''
+                                background_color: 90/255, 101/255, 108/255
+                            MDTextFieldRect:
+                                id: de_age
+                                multiline: False
+                                cursor_color: 196/255, 204/255, 217/255
+                                hint_text: 'Age'
+                                hint_text_color: 149/255, 158/255, 167/255
+                                on_text: self.foreground_color = 196/255, 204/255, 217/255
+                                size_hint: 1, None
+                                height: '50dp'
+                                color: 196/255, 204/255, 217/255
+                                font_size: '20sp'
+                                background_normal: ''
+                                background_color: 90/255, 101/255, 108/255
+                            MDTextFieldRect:
+                                id: de_city
+                                multiline: False
+                                cursor_color: 1, 1, 1
+                                hint_text: 'City'
+                                hint_text_color: 149/255, 158/255, 167/255
+                                on_text: self.foreground_color = 196/255, 204/255, 217/255
+                                size_hint: 1, None
+                                height: '50dp'
+                                font_size: '20sp'
+                                background_normal: ''
+                                background_color: 90/255, 101/255, 108/255
+                            Button:
+                                name: 'data_check_b'
+                                icon: 'check-circle'
+                                text: 'show table (same screen)'
+                                color: 90/255, 101/255, 108/255
+                                font_size: '20sp'
+                                size_hint: 0.1, None
+                                height: '50dp'
+                                background_normal: ''
+                                background_color: 116/255, 189/255, 232/255
+                                on_release:
+                                    app.data_entry_check('same_screen')
+                            Button:
+                                name: 'data_check_b'
+                                icon: 'check-circle'
+                                text: 'show table (new screen)'
+                                color: 90/255, 101/255, 108/255
+                                font_size: '20sp'
+                                size_hint: 0.1, None
+                                height: '50dp'
+                                background_normal: ''
+                                background_color: 116/255, 189/255, 232/255
+                                on_release:
+                                    app.data_entry_check('s2')
+                    BoxLayout:
+                        orientation: 'vertical'
+                        id: input_check_table
+                        spacing: '5dp'
+                        padding: '10dp'
+
+##########################################################
+########################################################## screen two
+##########################################################
+
+        Screen:
+            name: 's2'
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '5dp'
+                MDTopAppBar:
+                    md_bg_color: app.theme_cls.primary_dark
+                    specific_text_color: app.theme_cls.primary_light
+                    elevation: 1
+                    left_action_items:
+                        [
+                        ["home", lambda x: app.callback_top_nav('home'), 'home'],
+                        ["checkbox-outline", lambda x: app.callback_top_nav('same_screen'), 'input_box']
+                        ]
+                    right_action_items:
+                        [["copyright"]]
+                BoxLayout:
+                    orientation: 'vertical'
+                    id: new_screen
+                    spacing: '5dp'
+                    padding: '10dp'
+
+
+
+
+
